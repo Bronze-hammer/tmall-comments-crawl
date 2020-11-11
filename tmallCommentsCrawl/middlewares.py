@@ -2,11 +2,14 @@
 #
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+import random
 
 from scrapy import signals
 
 # useful for handling different item types with a single interface
 from itemadapter import is_item, ItemAdapter
+
+from tmallCommentsCrawl.settings import IPPOOL
 
 
 class TmallcommentscrawlSpiderMiddleware:
@@ -78,7 +81,10 @@ class TmallcommentscrawlDownloaderMiddleware:
         # - or return a Request object
         # - or raise IgnoreRequest: process_exception() methods of
         #   installed downloader middleware will be called
-        return None
+        # return None
+        thisip = random.choice(IPPOOL)
+        print("this is ip :" + thisip["ipaddr"])
+        request.meta["proxy"] = "http://" + thisip["ipaddr"]
 
     def process_response(self, request, response, spider):
         # Called with the response returned from the downloader.

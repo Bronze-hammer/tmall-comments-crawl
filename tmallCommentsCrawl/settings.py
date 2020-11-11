@@ -40,10 +40,10 @@ COOKIES_ENABLED = False
 #TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
-#DEFAULT_REQUEST_HEADERS = {
-#   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-#   'Accept-Language': 'en',
-#}
+DEFAULT_REQUEST_HEADERS = {
+   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+   'Accept-Language': 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+}
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
@@ -53,9 +53,10 @@ COOKIES_ENABLED = False
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'tmallCommentsCrawl.middlewares.TmallcommentscrawlDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+    'tmallCommentsCrawl.middlewares.TmallcommentscrawlDownloaderMiddleware': 543,
+    'myproxies.middlewares.MyproxiesSpiderMiddleware':125
+}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
@@ -89,3 +90,17 @@ COOKIES_ENABLED = False
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+REDIRECT_ENABLED = False
+HTTPERROR_ALLOWED_CODES = [302]
+
+
+IPPOOL=[
+    {"ipaddr":"61.129.70.131:8080"},
+    {"ipaddr":"61.152.81.193:9100"},
+    {"ipaddr":"120.204.85.29:3128"},
+    {"ipaddr":"219.228.126.86:8123"},
+    {"ipaddr":"61.152.81.193:9100"},
+    {"ipaddr":"218.82.33.225:53853"},
+    {"ipaddr":"223.167.190.17:42789"}
+]
